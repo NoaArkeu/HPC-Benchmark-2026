@@ -40,3 +40,32 @@ The experiment proves that modern high-performance ARM processors are capable of
 
 ---
 **T** **Date: 2026-03-13**
+
+### 🚀 n=4000 Stress Test: Architecture vs. Throughput 
+### 🚀 n=4000 极限压测：架构效率与硬件吞吐量的博弈
+
+To further investigate the boundary between **Architecture Efficiency (IPC)** and **Hardware Throughput (Cores/Bandwidth)**, we increased the matrix dimension to $n=4000$. This involves ~64 billion floating-point operations and handles ~256MB of data, completely exceeding the L3 cache of all tested CPUs.
+
+为了深入探究 **架构效率 (IPC)** 与 **硬件吞吐量 (核心/带宽)** 的博弈边界，我们将矩阵维度提升至 $n=4000$。该测试包含约 640 亿次浮点运算，数据量达到 ~256MB，彻底击穿了所有测试 CPU 的三级缓存 (L3 Cache)。
+
+#### 1. Experimental Data | 实验数据实测
+
+| Platform (平台) | Cores (核心数) | Load (负载) | Time (耗时) | Characterization (性能特征) |
+| :--- | :--- | :--- | :--- | :--- |
+| **School Galera** | 12x Ivy Bridge | 1137% | **197.06s** | High throughput wins in heavy tasks. (大任务下吞吐量制胜) |
+| **Raspberry Pi 5** | 4x Cortex-A76 | 400% | **526.31s** | Superior IPC but limited by core count. (单核素质极高，但受限于核心总数) |
+| **Google Cloud** | 1x AMD EPYC | 100% | *TBD (待填)* | Single-thread baseline performance. (现代架构单核性能基准) |
+
+#### 2. Key Findings | 核心发现
+
+* **Performance Inversion (性能反转)**: At $n=2000$, Pi 5 was the winner due to modern architecture. However, at $n=4000$, the **School Server (12-core)** reclaimed its dominance by leveraging massive multi-core throughput.
+  在 $n=2000$ 时，树莓派 5 凭借架构优势领先；但在 $n=4000$ 时，拥有 12 个物理核心的学校服务器凭借更高的并行计算总量重新夺回了统治地位。
+
+* **The Memory Wall (内存墙效应)**: As data size grows to 256MB, memory bandwidth becomes the primary bottleneck. The server's 12 cores, despite being older (DDR3), provide higher aggregate data throughput compared to the Pi 5's 4 cores. 
+  随着数据规模增长，内存带宽成为主要瓶颈。学校服务器的 12 个核心虽然架构较老 (DDR3)，但其搬运数据的总吞吐量依然超过了树莓派 5 的 4 个核心。
+
+* **Conclusion (结论)**: Architecture matters for agility, but **Scale** matters for heavy lifting.
+  架构决定了小任务的灵活性，而 **规模（核心数）** 决定了大任务的硬实力。
+
+---
+**Updated on 2026-03-13**
