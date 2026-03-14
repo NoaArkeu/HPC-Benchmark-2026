@@ -54,7 +54,7 @@ To further investigate the boundary between **Architecture Efficiency (IPC)** an
 | :--- | :--- | :--- | :--- | :--- |
 | **School Galera** | 12x Ivy Bridge | 1137% | **197.06s** | High throughput wins in heavy tasks. (大任务下吞吐量制胜) |
 | **Raspberry Pi 5** | 4x Cortex-A76 | 400% | **526.31s** | Superior IPC but limited by core count. (单核素质极高，但受限于核心总数) |
-| **Google Cloud** | 1x AMD EPYC | 100% | *3580.37s* | Single-thread baseline performance. (现代架构单核性能基准) |
+| **Google Cloud** | 1x AMD EPYC | 100% | **3580.37s** | Single-thread baseline performance. (现代架构单核性能基准) |
 
 #### 2. Key Findings | 核心发现
 
